@@ -87,6 +87,10 @@ git clone --branch OQS-OpenSSL_1_1_1-stable https://github.com/open-quantum-safe
 
 ### Step 2: Build and Install the liboqs Library
 
+
+Note: `You can also add CPU features by enabling specific CPU instruction sets during the configuration. For detailed information, please refer to the https://github.com/open-quantum-safe/liboqs/blob/main/CONFIGURE.md#OQS_USE_CPUFEATURE_INSTRUCTIONS documentation on how to optimize the build for your specific hardware capabilities. This can help improve performance by leveraging hardware-accelerated features supported by your CPU.` 
+
+
 The `liboqs` library is required to support quantum-safe algorithms. Clone it, build, and install it:
 
 ```bash
@@ -121,6 +125,14 @@ sudo make install
 
 ---
 
+# Blacklist
+A blacklist feature has been implemented to block specific IP addresses from connecting to the server. The blacklist is stored in the file located at `build/security/ip_list_v4.txt.` Each entry in the file consists of a name and an associated IPv4 address, formatted as name;ipv4. The server checks incoming connections against this list, and any matching IP addresses will be rejected.
+
+Example entry in `ip_list_v4.txt`:
+```bash
+EDirik;192.168.1.100
+```
+---
 
 # Configuration
 
